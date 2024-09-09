@@ -2,27 +2,16 @@
   <div>
     <h3>11th Grade Bible {{ week }} of {{ items.length }}</h3>
     <h1>{{ item.passage }}</h1>
-    <h3>Learning:</h3>
-    <ul>
-      <li>
-        <a :href="getBibleGatewayUrl(item.passage)" target="_blank"
-          >Bible Gateway</a
-        >
-      </li>
-      <li><a :href="getYoutubeUrl(item.passage)" target="_blank">Videos</a></li>
-      <li>
-        <a :href="getGoogleSearchUrl(item.passage)" target="_blank"
-          >Web Search</a
-        >
-      </li>
-    </ul>
+
     <h3>Assignment:</h3>
     <p>Each week, you'll have a new passage from the Bible to study.</p>
-    <ul>
-      <li>Copy/paste the steps to the attached document to answer.</li>
+    <ol>
       <li>
-        Read the passage a couple times and look up any words you don't
-        understand to get a good idea.
+        <a :href="getBibleGatewayUrl(item.passage)" target="_blank"
+          >Read the passage</a
+        >
+        a couple times and look up any words you don't understand to get a good
+        idea.
       </li>
       <li>Research the passage to find out what people say about it.</li>
       <li>
@@ -48,9 +37,18 @@
         Memorize your favorite verse or verses from this passage and demonstrate
         to an adult.
       </li>
+    </ol>
+    <p>
+      This should result in a well-written and thoughtful document about the
+      passage.
+    </p>
+    <h3>Research:</h3>
+    <ul>
+      <li><a :href="getYoutubeUrl(item.passage)" target="_blank">Videos</a></li>
       <li>
-        This should result in a well-written and thoughtful document about the
-        passage.
+        <a :href="getCommentarySearchUrl(item.passage)" target="_blank"
+          >Web Search</a
+        >
       </li>
     </ul>
   </div>
@@ -107,8 +105,8 @@ function getYoutubeUrl(passage: string) {
   return `https://www.youtube.com/results?search_query=${encodeURI(passage)}`;
 }
 
-function getGoogleSearchUrl(passage: string) {
-  return `https://www.google.com/search?q=${encodeURI(passage)}`;
+function getCommentarySearchUrl(passage: string) {
+  return `https://www.google.com/search?q=${encodeURI(passage)}+commentary`;
 }
 
 function getBibleGatewayUrl(passage: string) {
